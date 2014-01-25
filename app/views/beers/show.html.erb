@@ -18,7 +18,7 @@
 <% if @beer.ratings.empty? %>
 Has no ratings
 <% else %>
-Has <%= @beer.ratings.count %> ratings, average <%= @beer.average_rating %>
+Has <%= pluralize(@beer.ratings.count, 'rating')  %>, average <%= @beer.average_rating %>
 <% end %>
 </p>
 <%= link_to 'Edit', edit_beer_path(@beer) %> |
