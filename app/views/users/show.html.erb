@@ -7,19 +7,29 @@
 <% else %>
 	<p>Has made <%= pluralize(@user.ratings.count, 'rating')  %>, average: <%= @user.average_rating %></p>
 <p>
-Member of 
-<% @user.beer_clubs.each do |club| %>
-	 <%= link_to club.name, club %> 
-<%end%>
+<% if @user.beer_clubs.empty? %>
+User does not belong into any group.
+<% else %>
+	Member of 
+	<% @user.beer_clubs.each do |club| %>
+		 <%= link_to club.name, club %> 
+	<% end %>
+<% end %>
 </p>
 
 	<h2>ratings</h2>
 	<ul>
 	<% @user.ratings.each do |rating| %>
-		<li> <%= rating %> <%= link_to 'delete', rating, method: :delete, data: { confirm: 'Are you sure?'} %> </li>
+		<li> <%= rating %> 
+		<% if @user == current_user %>
+			<%= link_to 'delete', rating, method: :delete, data: { confirm: 'Are you sure?'} %> 
+		<% end %>
+		</li>
 	<%end%>
 	</ul>
 <% end %>
 
-
+<% if @user == current_user %>
 <%= link_to 'Edit', edit_user_path(@user) %>
+<%= link_to 'Destroy', @user, method: :delete, data: { confirm: 'Are you sure?' } %>
+<%end%>
