@@ -6,6 +6,12 @@
 	<p>Has no ratings</p>
 <% else %>
 	<p>Has made <%= pluralize(@user.ratings.count, 'rating')  %>, average: <%= @user.average_rating %></p>
+<p>
+Member of 
+<% @user.beer_clubs.each do |club| %>
+	 <%= link_to club.name, club %> 
+<%end%>
+</p>
 
 	<h2>ratings</h2>
 	<ul>
@@ -14,5 +20,6 @@
 	<%end%>
 	</ul>
 <% end %>
+
 
 <%= link_to 'Edit', edit_user_path(@user) %>
