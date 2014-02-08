@@ -13,3 +13,4 @@ deploy:
   app: calm-thicket-9133
   on:
     repo: nygrenh/ratebeer
+  run: "rake db:migrate"
