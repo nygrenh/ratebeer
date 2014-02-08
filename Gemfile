@@ -62,3 +62,5 @@ group :test do
 	gem 'launchy'
 end
 
+gem 'simplecov', require: false
+
