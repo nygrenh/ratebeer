@@ -20,7 +20,7 @@
         <td><%= brewery.year %></td>
         <% if current_user %>
         <td><%= link_to 'Edit', edit_brewery_path(brewery) %></td>
-        <td><%= link_to 'Destroy', brewery, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Destroy', brewery, method: :delete, data: { confirm: 'Are you sure?' } if current_user.admin %></td>
         <% end %>
       </tr>
     <% end %>
