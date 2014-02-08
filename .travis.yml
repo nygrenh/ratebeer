@@ -1,10 +1,15 @@
 language: ruby
-
 rvm:
- - 2.0.0
-
+- 2.0.0
 script:
- - bundle exec rake db:migrate --trace
- - RAILS_ENV=test bundle exec rake db:migrate --trace
- - bundle exec rake db:test:prepare
- - bundle exec rspec -fd spec/
+- bundle exec rake db:migrate --trace
+- RAILS_ENV=test bundle exec rake db:migrate --trace
+- bundle exec rake db:test:prepare
+- bundle exec rspec -fd spec/
+deploy:
+  provider: heroku
+  api_key:
+    secure: ICIqVbOnDAP//L74pgPpW543ul+ufTw+5YyzbNsZoPZpzy7LhfIrbVlgZ6DOmQCr+8KiCswsyHsDwhakox0Eo3pLA/4GFCfjGrXYkxQitRTHAjMox/V7ntDXBQtc/DqgS1qKgkXkTP+0/x/0JV9YzA36z2rVBqHREwWEhaG4Oo0=
+  app: calm-thicket-9133
+  on:
+    repo: nygrenh/ratebeer
