@@ -21,4 +21,4 @@ Founded in
 <% end %>
 </ul>
 
-<%= link_to 'Edit', edit_beer_club_path(@beer_club) %> |
+<%= link_to 'Edit', edit_beer_club_path(@beer_club) if current_user %> 
