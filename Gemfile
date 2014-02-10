@@ -64,3 +64,5 @@ end
 
 gem 'simplecov', require: false
 
+gem 'httparty'
+
