@@ -67,3 +67,6 @@ gem 'simplecov', require: false
 
 gem 'httparty'
 
+gem "rails-settings-cached", "0.3.1"
+
+
