@@ -87,8 +87,8 @@ describe User do
 		it "is the one with highest rating if several rated" do
 			crappy = Brewery.create name:"Crappy", year:2001
 			good = Brewery.create name:"Good", year:1983
-			crappy_beer = Beer.create name:"Crappy", style:"Larger"
-			good_beer = Beer.create name:"Good", style:"Larger"
+			crappy_beer = Beer.create name:"Crappy", style_id:1
+			good_beer = Beer.create name:"Good", style_id:1
 
 			crappy.beers << crappy_beer
 			good.beers << good_beer
@@ -118,10 +118,11 @@ describe User do
 		end
 
 		it "is the one with highest rating if several rated" do
+
 			crappy = Brewery.create name:"Crappy", year:2001
 			good = Brewery.create name:"Good", year:1983
-			crappy_beer = Beer.create name:"Crappy", style:"Larger"
-			good_beer = Beer.create name:"Good", style:"Weizen"
+			crappy_beer = Beer.create name:"Crappy", style_id:1
+			good_beer = Beer.create name:"Good", style_id:2
 
 			crappy.beers << crappy_beer
 			good.beers << good_beer

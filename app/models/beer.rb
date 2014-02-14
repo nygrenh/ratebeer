@@ -3,6 +3,8 @@ class Beer < ActiveRecord::Base
 
 	validates :name, presence: true
 
+	validates_presence_of :style_id
+
 	belongs_to :brewery
 	belongs_to :style
 	has_many :ratings, dependent: :destroy
