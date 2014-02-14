@@ -11,6 +11,8 @@ class BeerClubsController < ApplicationController
   # GET /beer_clubs/1
   # GET /beer_clubs/1.json
   def show
+    @membership = Membership.new
+    @membership.beer_club = @beer_club
   end
 
   # GET /beer_clubs/new
@@ -72,4 +74,4 @@ class BeerClubsController < ApplicationController
     def beer_club_params
       params.require(:beer_club).permit(:name, :founded, :city)
     end
-end
+  end
