@@ -26,6 +26,11 @@ Ratebeer::Application.routes.draw do
   resources :places, only:[:index, :show]
   post 'places', to:'places#search'
 
+  get 'beerlist', to:'beers#list'
+  get 'ngbeerlist', to:'beers#nglist'
+
+  get 'brewerylist', to:'breweries#list'
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
