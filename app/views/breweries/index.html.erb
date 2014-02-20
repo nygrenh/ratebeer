@@ -20,7 +20,7 @@
         <td><%= brewery.year %></td>
         <% if current_user %>
         <td><%= link_to 'Edit', edit_brewery_path(brewery) %></td>
-        <td><%= link_to 'Destroy', brewery, method: :delete, data: { confirm: 'Are you sure?' } if current_user.admin %></td>
+        <td><%= link_to 'Destroy', brewery, method: :delete, data: { confirm: 'Are you sure?' }, class:'btn btn-danger' if current_user.admin %></td>
         <% end %>
       </tr>
     <% end %>
@@ -29,4 +29,4 @@
 
 <br>
 
-<%= link_to 'New Brewery', new_brewery_path if current_user %>
+<%= link_to 'New Brewery', new_brewery_path, class:'btn btn-primary' if current_user %>
