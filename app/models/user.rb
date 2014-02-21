@@ -9,7 +9,9 @@ class User < ActiveRecord::Base
 
 	has_many :ratings, dependent: :destroy
 	has_many :beers, through: :ratings
-	has_many :memberships, dependent: :destroy
+	has_many :memberships, -> { confirmed }, dependent: :destroy
+	has_many :membership_applications, -> { unconfirmed }, class_name: 'Membership', dependent: :destroy
+
 	has_many :beer_clubs, through: :memberships
 
 	def favorite_beer

@@ -1,5 +1,5 @@
 class MembershipsController < ApplicationController
-  before_action :set_membership, only: [:show, :edit, :update, :destroy]
+  before_action :set_membership, only: [:show, :edit, :update, :destroy, :confirm]
 
   # GET /memberships
   # GET /memberships.json
@@ -31,8 +31,8 @@ class MembershipsController < ApplicationController
 
     respond_to do |format|
       if @membership.save
-        format.html { redirect_to @membership.beer_club, notice: "#{@membership.user.username}, welcome to the club!" }
-        format.json { render action: 'show', status: :created, location: @membership }
+        format.html { redirect_to @membership.beer_club, notice: "#{@membership.user.username}, your membership application might get processed in the near future (if you're lucky)!" }
+        format.json { render action: 'show', status: :created, location: @membership.beer_club }
       else
         @beer_clubs = BeerClub.all
         format.html { render action: 'new' }
@@ -62,6 +62,14 @@ class MembershipsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to memberships_url }
       format.json { head :no_content }
+    end
+  end
+
+  def confirm
+    if @membership.beer_club.is_a_member(current_user.id)
+      @membership.confirmed = true
+      @membership.save
+      redirect_to @membership.beer_club, notice: 'Membership was successfully confirmed.' 
     end
   end
 

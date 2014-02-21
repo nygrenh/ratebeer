@@ -10,10 +10,20 @@
 <% if @user.beer_clubs.empty? %>
 User does not belong into any group.
 <% else %>
-	Member of 
-	<% @user.beer_clubs.each do |club| %>
-		 <%= link_to club.name, club %> 
-	<% end %>
+	<h3>Member of </h3>
+	<ul>
+		<% @user.beer_clubs.each do |club| %>
+			 <li> <%= link_to club.name, club %> </li>
+		<% end %>
+	</ul>
+<% end %>
+<% unless @user.membership_applications.empty? %>
+	<h3> Pending membership applications </h3>
+	<ul>
+		<% @user.membership_applications.each do |application| %>
+			 <li> <%= link_to application.beer_club.name, application.beer_club %> </li>
+		<% end %>
+	</ul>
 <% end %>
 </p>
 
