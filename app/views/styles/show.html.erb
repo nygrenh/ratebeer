@@ -9,5 +9,6 @@
 	<li> <%= link_to beer.name, beer %> by <%= link_to beer.brewery.name, beer.brewery %> </li>
 <% end %>
 </ul>
-<%= link_to 'Edit', edit_style_path(@style) %>
-<%= link_to 'Destroy', @style, method: :delete, data: { confirm: 'Are you sure?' } if current_user and current_user.admin %>
+
+<%= edit_and_destroy_buttons(@style) %>
+

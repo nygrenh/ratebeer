@@ -9,7 +9,7 @@
 	<% objects.each do |o| %>
 		<tr>
 			<td> <%= o.name %> </td>
-			<td> <%= o.average_rating %> </td>
+			<td> <%= round(o.average_rating) %> </td>
 		</tr>
 		<% end %>
 	</tbody>
