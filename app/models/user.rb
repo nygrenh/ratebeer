@@ -1,9 +1,10 @@
 class User < ActiveRecord::Base
+	require 'securerandom'
 	include RatingAverage
 
 	has_secure_password
 
-	validates :username, uniqueness: true, length: { in: 3..15  }
+	validates :username, uniqueness: true, length: { in: 3..57  }
 	validates :password, length: { minimum: 4 }
 	validate :password_complexity
 
@@ -38,6 +39,20 @@ class User < ActiveRecord::Base
 			style_sum = ratings.select{ |r| r.beer.style == style}.map {|r| r.score }.sum
 			style_sum/style_count
 		end
+	end
+
+	def self.from_omniauth(auth)
+	  where(auth.slice(:provider, :uid)).first_or_initialize.tap do |user|
+	    user.provider = auth.provider
+	    user.uid = auth.uid
+	    user.username = auth.info.name
+	    user.oauth_token = auth.credentials.token
+	    user.oauth_expires_at = Time.at(auth.credentials.expires_at)
+	    password = SecureRandom.base64 + "1A" # for complexity requirements
+	    user.password = password 
+	    user.password_confirmation = password
+	    user.save!
+	  end
 	end
 
 	def self.top(n)

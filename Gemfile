@@ -79,3 +79,5 @@ group :development do
 end
 
 gem 'rack-mini-profiler'
+
+gem 'omniauth-facebook'

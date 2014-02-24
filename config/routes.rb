@@ -34,6 +34,11 @@ Ratebeer::Application.routes.draw do
   get 'ngbeerlist', to:'beers#nglist'
 
   get 'brewerylist', to:'breweries#list'
+
+  # Facebook
+  get 'auth/:provider/callback', to: 'sessions#create_fb'
+  get 'auth/failure', to: redirect('/')
+  get 'signout', to: 'sessions#destroy'
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
