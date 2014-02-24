@@ -13,7 +13,7 @@ deploy:
   provider: heroku
   api_key:
     secure: ICIqVbOnDAP//L74pgPpW543ul+ufTw+5YyzbNsZoPZpzy7LhfIrbVlgZ6DOmQCr+8KiCswsyHsDwhakox0Eo3pLA/4GFCfjGrXYkxQitRTHAjMox/V7ntDXBQtc/DqgS1qKgkXkTP+0/x/0JV9YzA36z2rVBqHREwWEhaG4Oo0=
-  app: calm-thicket-9133
+  app: nygrenh-ratebeer
   on:
     repo: nygrenh/ratebeer
   run: "rake db:migrate"
