@@ -9,7 +9,6 @@ class Style < ActiveRecord::Base
 	end
 
 	def self.top(n)
-		sorted_by_rating_in_desc_order = Style.all.sort_by{ |b| -(b.average_rating||0) } 
-		sorted_by_rating_in_desc_order.take(3)
+		Style.order(average_rating: :desc).limit(n)
 	end
 end

@@ -8,7 +8,7 @@
 	<tbody>
 	<% objects.each do |o| %>
 		<tr>
-			<td> <%= o.name %> </td>
+			<td> <%= link_to o.name, o %> </td>
 			<td> <%= round(o.average_rating) %> </td>
 		</tr>
 		<% end %>

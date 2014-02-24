@@ -41,10 +41,7 @@ class User < ActiveRecord::Base
 	end
 
 	def self.top(n)
-		users = User.all.sort_by do |user|
-			-Rating.where(user_id:user.id).count
-		end
-		users.take(n)
+		User.order(rating_count: :desc).limit(n)
 	end
 
 	private

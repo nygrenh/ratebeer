@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140223162520) do
+ActiveRecord::Schema.define(version: 20140224094810) do
 
   create_table "beer_clubs", force: true do |t|
     t.string   "name"
@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 20140223162520) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "style_id"
+    t.integer  "average_rating"
   end
 
   create_table "breweries", force: true do |t|
@@ -35,6 +36,7 @@ ActiveRecord::Schema.define(version: 20140223162520) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "active"
+    t.integer  "average_rating"
   end
 
   create_table "memberships", force: true do |t|
@@ -69,6 +71,7 @@ ActiveRecord::Schema.define(version: 20140223162520) do
     t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "average_rating"
   end
 
   create_table "users", force: true do |t|
@@ -77,6 +80,7 @@ ActiveRecord::Schema.define(version: 20140223162520) do
     t.datetime "updated_at"
     t.string   "password_digest"
     t.boolean  "admin"
+    t.integer  "rating_count"
   end
 
   add_index "users", ["username"], name: "index_users_on_username"
